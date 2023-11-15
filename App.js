@@ -1,16 +1,18 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Text, View, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import * as Splashscreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import Home from "./screens/home";
+import { NavigationContainer } from "@react-navigation/native";
+import Navigator from "./navigation/navigation";
+import { AudioProvider, AudioContext } from "./context/audio_provider.js";
 
 export default function App() {
   return (
-    <>
-      <Home />
-    </>
+    <AudioProvider>
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
+    </AudioProvider>
   );
 }
