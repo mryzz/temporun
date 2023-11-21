@@ -27,7 +27,7 @@ const Navigator = () => {
         component={Player}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="headset" size={size} color={color} />
+            <Ionicons name="headset" size={size} color={color}/>
           ),
         }}
       />
@@ -45,7 +45,7 @@ const Navigator = () => {
         component={AudioList}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="library-music" size={size} color={color} />
+            <MaterialIcons name="library-music" size={size} color={color}/>
           ),
         }}
       />

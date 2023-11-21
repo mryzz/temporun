@@ -1,9 +1,11 @@
-import React from "react"; 
-import {View, Text, StyleSheet} from "react-native";
+import React from "react";
+import {View, Text, StyleSheet} from "react-native"; 
+import { useTheme } from 'react-native-paper';
 
-export default function Player() {
-  return <View style={styles.container}>
-    <Text>Player</Text>
+export default function PLayer() {
+  const theme = useTheme();
+  return <View style={[styles.container, theme]}>
+    <Text>player</Text>
   </View>
 }
 
