@@ -1,63 +1,81 @@
-import React, { useState } from "react"; 
+import React, { useState, useCallback } from "react"; 
 import { View, Text, StyleSheet } from "react-native";
 import { useTheme, Chip } from 'react-native-paper';
+import MusicCard from "../components/music_cards";
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const chipNames = ['Running', 'Walking', 'Cycling'];
+const imageFiles = [
+  "bad-liar.jpg",
+  "death-bed.jpg",
+  "faded.jpg",
+  "solo.jpg",
+  "without-me.jpg",
+];
+
+const imageMapping = {
+  "bad-liar.jpg": require("../assets/album_arts/bad-liar.jpg"),
+  "death-bed.jpg": require("../assets/album_arts/death-bed.jpg"),
+  "faded.jpg": require("../assets/album_arts/faded.jpg"),
+  "solo.jpg": require("../assets/album_arts/solo.jpg"),
+  "without-me.jpg": require("../assets/album_arts/without-me.jpg"),
+};
 
 export default function Home() {
   const theme = useTheme();
   const [selectedChip, setSelectedChip] = useState(null);
+  const [userName, setUserName] = useState('Yong Ze');
 
-  const handleChipPress = (chip) => {
+  const handleChipPress = useCallback((chip) => {
     setSelectedChip(chip);
-    console.log(chip);
-  };
+  }, []);
 
   return (
     <>
-      <View style={[styles.container, theme]}>
-        <Text>Welcome, Yong Ze</Text>
-      </View>
-      <View style={[styles.container, theme]}>
-        <Chip
-          mode="outlined"
-          selected={selectedChip === 'Running'}
-          onPress={() => handleChipPress('Running')}
-        >
-          Running
-        </Chip>
-        <Chip
-          mode="outlined"
-          selected={selectedChip === 'Walking'}
-          onPress={() => handleChipPress('Walking')}
-        >
-          Walking
-        </Chip>
-        <Chip
-          mode="outlined"
-          selected={selectedChip === 'Cycling'}
-          onPress={() => handleChipPress('Cycling')}
-        >
-          Cycling
-        </Chip>
-      </View>
+      <SafeAreaView style={[styles.topContainer, theme]}>
+        <View>
+          <Text style={styles.title}>Welcome back, {userName}</Text>
+        </View>
+        <View style={[styles.subContainer, theme]}>
+          {chipNames.map(chipName => (
+            <Chip
+              key={chipName}
+              mode="outlined"
+              selected={selectedChip === chipName}
+              onPress={() => handleChipPress(chipName)}
+            >
+              {chipName}
+            </Chip>
+          ))}
+        </View>
+      </SafeAreaView>
       <View style={styles.bottomContainer}>
-        {/* Render your music cards here */}
+        <MusicCard text="dynamic" imageFiles={imageFiles} imageMapping={imageMapping} />
       </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 3,
-    flexDirection: "row", // Change this line
-    justifyContent: 'center',
-    alignItems: 'center',
+  topContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
   },
-  sub: {
-sub: {
-  flex: 1,
-  justifyContent: 'flex-start',
-  // Remove or change the flexDirection property
-},
+  subContainer: {
+    flexDirection: "row",
+    justifyContent: 'left',
+    paddingLeft: '5%',
+    paddingBottom: 5
+  },
+  bottomContainer: {
+    flex: 7,
+    height: 200, 
+    width: "100%",
+    justifyContent: 'flex-start',
+  },
+  title: {
+    fontSize: 30, 
+    fontWeight: 'bold',
+    padding: '5%',
   }
 });

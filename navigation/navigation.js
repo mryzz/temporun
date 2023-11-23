@@ -20,6 +20,7 @@ const Navigator = () => {
           tabBarIcon: ({ color, size }) => (
             <Entypo name="home" size={size} color={color} />
           ),
+        headerShown: false,
         }}
       />
       <Tab.Screen
@@ -29,6 +30,7 @@ const Navigator = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="headset" size={size} color={color}/>
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
