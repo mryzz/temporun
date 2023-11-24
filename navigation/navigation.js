@@ -6,7 +6,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Player from "../screens/player";
 import Library from "../screens/library";
 import Home from "../screens/home";
-import { AudioList } from "../screens/audio_list";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,15 +38,6 @@ const Navigator = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="library-music" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="AudioList"
-        component={AudioList}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="library-music" size={size} color={color}/>
           ),
         }}
       />

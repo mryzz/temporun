@@ -3,23 +3,9 @@ import { View, Text, StyleSheet } from "react-native";
 import { useTheme, Chip } from 'react-native-paper';
 import MusicCard from "../components/music_cards";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import songs from '../assets/data.js';
 
 const chipNames = ['Running', 'Walking', 'Cycling'];
-const imageFiles = [
-  "bad-liar.jpg",
-  "death-bed.jpg",
-  "faded.jpg",
-  "solo.jpg",
-  "without-me.jpg",
-];
-
-const imageMapping = {
-  "bad-liar.jpg": require("../assets/album_arts/bad-liar.jpg"),
-  "death-bed.jpg": require("../assets/album_arts/death-bed.jpg"),
-  "faded.jpg": require("../assets/album_arts/faded.jpg"),
-  "solo.jpg": require("../assets/album_arts/solo.jpg"),
-  "without-me.jpg": require("../assets/album_arts/without-me.jpg"),
-};
 
 export default function Home() {
   const theme = useTheme();
@@ -50,7 +36,7 @@ export default function Home() {
         </View>
       </SafeAreaView>
       <View style={styles.bottomContainer}>
-        <MusicCard text="dynamic" imageFiles={imageFiles} imageMapping={imageMapping} />
+        <MusicCard songs={songs} />
       </View>
     </>
   );
@@ -63,15 +49,14 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     flexDirection: "row",
-    justifyContent: 'left',
+    justifyContent: 'flex-start',
     paddingLeft: '5%',
     paddingBottom: 5
   },
   bottomContainer: {
     flex: 7,
-    height: 200, 
+    height: '100%', 
     width: "100%",
-    justifyContent: 'flex-start',
   },
   title: {
     fontSize: 30, 
