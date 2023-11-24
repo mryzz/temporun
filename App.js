@@ -7,16 +7,17 @@ import {
   MD3LightTheme as DefaultTheme,
   PaperProvider,
   adaptNavigationTheme,
-} from 'react-native-paper';
+} from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import Navigator from "./navigation/navigation";
-import colorTheme from "./assets/color_theme"
-const { LightTheme } = adaptNavigationTheme({ reactNavigationLight: DefaultTheme });
+import colorTheme from "./misc/color_theme";
+const { LightTheme } = adaptNavigationTheme({
+  reactNavigationLight: DefaultTheme,
+});
 
 const theme = {
   backgroundColor: colorTheme.colors.primaryContainer,
 };
-
 
 export default function App() {
   return (
